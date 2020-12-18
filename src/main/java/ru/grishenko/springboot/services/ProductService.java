@@ -41,4 +41,8 @@ public class ProductService {
         productRepository.addNewProduct(new Product(title, cost));
     }
 
+    public void deleteProductById(Long id) {
+        productRepository.deleteProductById(id);
+    }
+
 }

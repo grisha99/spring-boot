@@ -8,10 +8,11 @@ import ru.grishenko.springboot.models.Product;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 @Component
-@Primary
+
 public class ProductMemRepository implements ProductRepository{
 
     private List<Product> productList;
@@ -40,6 +41,19 @@ public class ProductMemRepository implements ProductRepository{
             throw new CreateProductException("cost", "Cost cannot be zero or negative");
         }
         productList.add(product);
+    }
+
+    @Override
+    public void deleteProductById(Long id) {
+        Iterator<Product> iter = productList.iterator();
+        Product item;
+        while (iter.hasNext()) {
+            item = iter.next();
+            if (item.getId().equals(id)) {
+                iter.remove();
+                return;
+            }
+        }
     }
 
     @PostConstruct
