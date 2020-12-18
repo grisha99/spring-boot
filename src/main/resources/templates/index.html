@@ -30,7 +30,7 @@
         <td>Id</td>
         <td>Наименование</td>
         <td>Цена</td>
-
+        <td>Действия</td>
     </tr>
     </thead>
     <tbody>
@@ -39,7 +39,9 @@
         <td th:text="${p.id}"></td>
         <td th:text="${p.title}"></td>
         <td th:text="${p.cost}"></td>
-
+        <td>
+            <a class="btn btn-danger" th:href="@{'/products/delete/' + ${p.id}}">Удалить</a>
+        </td>
     </tr>
     </tbody>
 </table>
